@@ -1,0 +1,8 @@
+namespace schemas;
+
+table Emotes {
+xD:int;
+xD2:int;
+}
+
+root_type Emotes;

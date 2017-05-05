@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package pajbot;
+
+service Module {
+    rpc HandleRawIRCMessage(RawIRCMessage) returns (Empty);
+    rpc HandleWhisper(Empty) returns (Empty);
+    rpc HandleEmotes(EmotesMessage) returns (Empty);
+}
+
+message RawIRCMessage {
+    string Message = 1;
+}
+
+
+
+message EmotesMessage {
+
+    message TwitchEmote {
+        uint32 id = 1;
+        string name = 2;
+        uint32 count = 3;
+    }
+
+    message BTTVEmote {
+        string hash = 1;
+        string name = 2;
+    }
+
+    repeated TwitchEmote twitchEmotes = 1;
+    repeated BTTVEmote bttvEmotes = 2;
+}
+
+message Empty {
+
+}
