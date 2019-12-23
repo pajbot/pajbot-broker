@@ -7,6 +7,8 @@ import (
 	"net"
 	"net/textproto"
 	"strings"
+
+	"github.com/pajlada/pajbot2/parser"
 )
 
 type Connection struct {
@@ -63,6 +65,9 @@ func (c *Connection) startReading() {
 		if c.Connected {
 			// log.Print("sending:", line)
 			c.ReadRaw <- line
+
+			heh := parser.Parse(line)
+			fmt.Println("heh", heh)
 
 			c.test()
 		}
